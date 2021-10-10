@@ -2,8 +2,6 @@
 
 Hyval will store your information encrypted and decrypt it when needed :>
 
-note : there was mistake by me , so i deleted repo and .git folder anciently, so there isn't any commit history.
-
 ### Usage:
 #### instalation:
 
@@ -44,10 +42,13 @@ action.name = "test"
 action.password = "test"
 action.save()
 ```
-now look at database, your value is encrypted and to retrieve value :
+Now your 'password' field on database stored with encryption so to retrieve value :
 
 ```
 my_model = TestHyval.objects.get(pk=1)
 my_model.password
 >>> 'test'
 ```
+
+### mistake
+there was mistake by me , so i deleted 'repository' and '.git' folder anciently, so there isn't any commit about past.
