@@ -7,7 +7,7 @@ Hyval will store your information encrypted and decrypt it when needed :>
 
 for install package :
 ```
-pip install hyval
+pip install django-hyval
 ```
 
 #### example :
