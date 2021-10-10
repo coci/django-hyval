@@ -20,7 +20,8 @@ pip install hyval
 HIDE_MY_VALUE = {
 	'salt' : 'test',
 	'key': 'test',
-	'length' : 32
+	'length' : 32,
+	'iteration': 1000,
 }
 ```
 

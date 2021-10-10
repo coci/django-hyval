@@ -39,10 +39,10 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="hyval",
+    name="django-hyval",
     version=package_version,
     description="Encryption over django CharField",
-    url="https://github.com/coci/hyval",
+    url="https://github.com/coci/django-hyval",
     author="Soroush Safari",
     author_email="soroush.safari1992@gmail.com",
     license="GPLv3",

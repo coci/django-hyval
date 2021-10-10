@@ -24,22 +24,22 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
 
-def encrypt_keys(salt, key, value):
+def encrypt_keys(setting, value):
     """
             encrypt user credential
     """
-    secret_key = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=bytes(salt, 'utf-8'), iterations=1000,
-                            backend=default_backend()).derive(bytes(key, 'utf-8'))
+    secret_key = PBKDF2HMAC(algorithm=hashes.SHA256(), length=setting['length'], salt=bytes(setting['salt'], 'utf-8'), iterations=setting['iteration'],
+                            backend=default_backend()).derive(bytes(setting['key'], 'utf-8'))
     fernet_obj = Fernet(base64.urlsafe_b64encode(secret_key))
     return fernet_obj.encrypt(bytes(value, 'utf-8')).decode("utf-8")
 
 
-def decrypt_keys(salt, key, value):
+def decrypt_keys(setting, value):
     """
             decrypt user credential
     """
 
-    secret_key = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=bytes(salt, 'utf-8'), iterations=1000,
-                            backend=default_backend()).derive(bytes(key, 'utf-8'))
+    secret_key = PBKDF2HMAC(algorithm=hashes.SHA256(), length=setting['length'], salt=bytes(setting['salt'], 'utf-8'), iterations=setting['iteration'],
+                            backend=default_backend()).derive(bytes(setting['key'], 'utf-8'))
     fernet_obj = Fernet(base64.urlsafe_b64encode(secret_key))
     return fernet_obj.decrypt(bytes(value, 'utf-8')).decode("utf-8")

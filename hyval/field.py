@@ -35,20 +35,21 @@ class HideMyValue(models.CharField):
     def __init__(self, *args, **kwargs):
         super(HideMyValue, self).__init__(*args, **kwargs)
 
-        self.key = settings.HIDE_MY_VALUE['key']
-        self.length = settings.HIDE_MY_VALUE['length']
-        self.salt = settings.HIDE_MY_VALUE['salt']
+        self.settting = settings.HIDE_MY_VALUE
 
     def get_db_prep_value(self, value, *args, **kwargs):
         if value is None:
             return None
-        return encrypt_keys(salt=self.salt, key=self.key, value=value)
+        # store encrypted data on database
+        return encrypt_keys(setting=self.settting, value=value)
 
     def to_python(self, value):
         if value is None or isinstance(value, str):
-            return decrypt_keys(salt=self.salt, key=self.key, value=value)
+            # retrieve encrypted data from database
+            return decrypt_keys(setting=self.settting, value=value)
         try:
-            return decrypt_keys(salt=self.salt, key=self.key, value=value)
+            # retrieve encrypted data from database
+            return decrypt_keys(setting=self.settting, value=value)
         except (TypeError, ValueError):
             raise ValidationError(
                 "This value must be an integer or a string represents an integer.")

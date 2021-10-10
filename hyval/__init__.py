@@ -21,4 +21,4 @@
 from hyval.field import HideMyValue
 
 __author__ = "Soroush Safari"
-__version__ = '2.0'
+__version__ = '1.0.0'
