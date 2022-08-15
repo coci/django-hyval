@@ -51,4 +51,4 @@ my_model.password
 ```
 
 ### mistake
-there was mistake by me , so i deleted 'repository' and '.git' folder anciently, so there isn't any commit about past.
+there was mistake by me , so i deleted 'repository' and '.git' folder accidentally , so there isn't any commit about past.
